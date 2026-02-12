@@ -1,0 +1,33 @@
+name: Multi-Job Pipeline
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run linter
+        run: echo "Linting code..."
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run tests
+        run: echo "Running tests..."
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [lint, test] # ¡Perfecto! Espera a que ambos terminen
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build application
+        run: echo "Building app..."
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main' # rama main
+    steps:
+      - name: Deploy to production
+        run: echo "Deploying to prod..."
