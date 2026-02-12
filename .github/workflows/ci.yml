@@ -1,0 +1,25 @@
+name: nodejs CI
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: clonando app
+              uses: actions/checkout@v3
+
+            - name: configurando node js
+              uses: actions/setup-node@v3
+              with:
+                node-version: 22
+            - name: instalar paquetes
+              run: npm ci
+
+            - name: ejecutar linter
+              run: npm run lint
+            - name: ejecutar test
+              run: npm run test
