@@ -1,0 +1,20 @@
+name: Caching Test
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Node (Sin Cache)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Instalar Dependencias
+        run: npm ci
+        
+      - name: Test Simulado
+        run: echo "Corriendo tests..."
