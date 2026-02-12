@@ -1,0 +1,14 @@
+name: hola desde github
+
+on: [push]
+jobs:
+  greet:
+  runs-on: ubuntu-latest
+
+  steps:
+    -name: Decir hola
+     run:  echo "hola desde github"
+    -name: mostrar fechha
+     run: date
+    -name: listar archivos
+     run ls -la
