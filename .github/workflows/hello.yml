@@ -6,9 +6,9 @@ jobs:
   runs-on: ubuntu-latest
 
   steps:
-    -name: Decir hola
+    - name: Decir hola
      run:  echo "hola desde github"
-    -name: mostrar fechha
+    - name: mostrar fechha
      run: date
-    -name: listar archivos
-     run ls -la
+    - name: listar archivos
+     run: ls -la
