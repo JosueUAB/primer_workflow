@@ -1,10 +1,13 @@
 const { sum } = require('./app');
 console.log('Running tests...');
-if (sum(3, 7) === 10) {
-console.log('✓ Test passed');
-process.exit(0);
-} else {
-console.log('✗ Test failed');
-process.exit(1);
-}
+describe('Pruebas Unitarias', () => {
+  
+  test('La función suma debe sumar correctamente 1 + 2', () => {
+    expect(sum(1, 2)).toBe(3);
+  });
 
+  test('La función suma debe manejar números negativos', () => {
+    expect(sum(-1, -1)).toBe(-2);
+  });
+
+});
